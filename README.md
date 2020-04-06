@@ -1,5 +1,5 @@
 # BTVN JAVA SGU !
-* 🔒: Không nên copy past để cho mục đích xấu
+* 🔒: Không nên copy past vì mục đích xấu
 
 ## Problems
 * [Đề bài](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxwaHVuZ3RoaWVudHJhbmd8Z3g6NzgxZDQ3YmZjN2IxNTdl)
