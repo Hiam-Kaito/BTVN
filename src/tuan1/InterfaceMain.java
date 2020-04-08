@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class InterfaceMain {
     
-    public void main() {
+    public InterfaceMain() {
         
         JFrame frame = new JFrame("Main");
         Panel pTop = new Panel();
@@ -62,7 +62,6 @@ public class InterfaceMain {
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
                 InterfaceQuestion1 A = new InterfaceQuestion1();
-                A.main();
             }
         });
         
@@ -71,7 +70,6 @@ public class InterfaceMain {
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
                 InterfaceQuestion2 A = new InterfaceQuestion2();
-                A.main();
             }
         });
         
@@ -79,8 +77,7 @@ public class InterfaceMain {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
-                InterfaceQuestion3 A = new InterfaceQuestion3();
-                A.main();
+                InterfaceQuestion3 A = new InterfaceQuestion3();         
             }
         });
         
@@ -88,8 +85,7 @@ public class InterfaceMain {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
-                InterfaceQuestion4 A = new InterfaceQuestion4();
-                A.main();
+                InterfaceQuestion4 A = new InterfaceQuestion4();                
             }
         });
         
@@ -97,8 +93,7 @@ public class InterfaceMain {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
-                InterfaceQuestion5 A = new InterfaceQuestion5();
-                A.main();
+                InterfaceQuestion5 A = new InterfaceQuestion5();                
             }
         });
         
@@ -106,8 +101,7 @@ public class InterfaceMain {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
-                InterfaceQuestion6 A = new InterfaceQuestion6();
-                A.main();
+                InterfaceQuestion6 A = new InterfaceQuestion6();                 
             }
         });
         
@@ -115,8 +109,7 @@ public class InterfaceMain {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
-                InterfaceQuestion7 A = new InterfaceQuestion7();
-                A.main();
+                InterfaceQuestion7 A = new InterfaceQuestion7();                 
             }
         });
         
@@ -124,8 +117,7 @@ public class InterfaceMain {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //frame.setVisible(false);
-                //InterfaceQuestion8 A = new InterfaceQuestion8();
-                //A.main();
+                //InterfaceQuestion8 A = new InterfaceQuestion8();                // 
             }
         });
 

@@ -10,7 +10,7 @@ public class InterfaceQuestion3 {
     Question3 Q = new Question3();
     JTextField tfRadius = new JTextField();
         
-    public void main() {
+    public InterfaceQuestion3() {
         
         JFrame frame = new JFrame("eQuestion 3");
         Panel pTop = new Panel();
@@ -61,7 +61,6 @@ public class InterfaceQuestion3 {
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
                 InterfaceMain A = new InterfaceMain();
-                A.main();
             }
         });
         

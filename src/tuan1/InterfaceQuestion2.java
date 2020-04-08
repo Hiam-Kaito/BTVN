@@ -11,7 +11,7 @@ public class InterfaceQuestion2 {
     JTextField tfLength = new JTextField();
     JTextField tfWitdh = new JTextField();    
         
-    public void main() {
+    public InterfaceQuestion2() {
         
         JFrame frame = new JFrame("eQuestion 2");
         Panel pTop = new Panel();
@@ -67,7 +67,6 @@ public class InterfaceQuestion2 {
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
                 InterfaceMain A = new InterfaceMain();
-                A.main();
             }
         });
         

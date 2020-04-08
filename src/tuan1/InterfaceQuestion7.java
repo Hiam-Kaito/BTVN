@@ -9,7 +9,7 @@ public class InterfaceQuestion7 {
     JTextField tfTop ;
     Question7 Q;
      
-    public void main() {
+    public InterfaceQuestion7() {
         JFrame frame = new JFrame("Question 7");
         Q = new Question7();
         Font Arial = new Font("Arial",Font.BOLD,20);
@@ -112,7 +112,6 @@ public class InterfaceQuestion7 {
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
                 InterfaceMain A = new InterfaceMain();
-                A.main();
             }
         });
         ///////////////////////////////////////////

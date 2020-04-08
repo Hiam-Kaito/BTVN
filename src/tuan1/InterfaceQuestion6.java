@@ -10,7 +10,7 @@ public class InterfaceQuestion6 {
     Question6 Q = new Question6();
     JTextField tfNumb = new JTextField();
         
-    public void main() {
+    public InterfaceQuestion6() {
         
         JFrame frame = new JFrame("eQuestion 6");
         Panel pTop = new Panel();
@@ -59,7 +59,6 @@ public class InterfaceQuestion6 {
             public void actionPerformed(ActionEvent ae) {
                 frame.setVisible(false);
                 InterfaceMain A = new InterfaceMain();
-                A.main();
             }
         });
         
