@@ -10,35 +10,32 @@ public class InterfaceQuestion1 {
     Question1 Q = new Question1();
     JTextField tfNumb1 = new JTextField();
     JTextField tfNumb2 = new JTextField();    
-         
-    public InterfaceQuestion1() {
+    JFrame frame = new JFrame("eQuestion 1");
+    Panel pTop = new Panel();
+    Panel pBottom = new Panel();
+    Panel pDisplay = new Panel();
+    Panel pMiddle = new Panel();
+    JTextField tfRes = new JTextField("0");
+    JButton btnCong = new JButton("Cộng");
+    JButton btnTru = new JButton("Trừ");
+    JButton btnNhan = new JButton("Nhân");
+    JButton btnChia = new JButton("Chia");
+    JButton btnExit = new JButton("Trở lai");
+    Label lblText = new Label("Nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.");
+    Label lblNumb1 = new Label("Số thứ 1"); 
+    Label lblNumb2 = new Label("Số thứ 2"); 
+    Label lblRes = new Label("Kết quả"); 
+    Font Arial = new Font("Arial",Font.BOLD,40);
         
-        JFrame frame = new JFrame("eQuestion 1");
-        Panel pTop = new Panel();
-        Panel pBottom = new Panel();
-        Panel pDisplay = new Panel();
-        Panel pMiddle = new Panel();
-        JTextField tfRes = new JTextField("0");
-        JButton btnCong = new JButton("Cộng");
-        JButton btnTru = new JButton("Trừ");
-        JButton btnNhan = new JButton("Nhân");
-        JButton btnChia = new JButton("Chia");
-        JButton btnExit = new JButton("Trở lai");
-        Label lblText = new Label("Nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.");
-        Label lblNumb1 = new Label("Số thứ 1"); 
-        Label lblNumb2 = new Label("Số thứ 2"); 
-        Label lblRes = new Label("Kết quả"); 
-        
-        
+    public InterfaceQuestion1() {       
         lblText.setForeground(Color.DARK_GRAY);
-        lblText.setFont(new Font("Arial",Font.BOLD,40));
-        lblNumb1.setFont(new Font("Arial",Font.BOLD,40));
-        lblNumb2.setFont(new Font("Arial",Font.BOLD,40));
-        lblRes.setFont(new Font("Arial",Font.BOLD,40));
-        tfNumb1.setFont(new Font("Arial",Font.BOLD,40));
-        tfNumb2.setFont(new Font("Arial",Font.BOLD,40));
-        tfRes.setFont(new Font("Arial",Font.BOLD,40));
-        
+        lblText.setFont(Arial);
+        lblNumb1.setFont(Arial);
+        lblNumb2.setFont(Arial);
+        lblRes.setFont(Arial);
+        tfNumb1.setFont(Arial);
+        tfNumb2.setFont(Arial);
+        tfRes.setFont(Arial);
         
         frame.add(pTop);
         frame.add(pDisplay);
@@ -97,7 +94,7 @@ public class InterfaceQuestion1 {
             public void actionPerformed(ActionEvent ae) {
                 getNumb();
                 lblRes.setText("Tich");
-                tfRes.setText( String.valueOf( Q.product() ) );
+                tfRes.setText( String.valueOf( Q.product()) );
             }
         });
         
@@ -110,21 +107,23 @@ public class InterfaceQuestion1 {
             }
         });
         
+        lblNumb1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed (KeyEvent e) {
+                if ( e.getKeyCode() == KeyEvent.VK_ENTER ) {
+                    lblNumb2.requestFocus();
+                }
+            }
+        });
 
         //full mang hinh
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-        //xoa bo cac thanh window
-        //frame.setUndecorated(true);
 
         //tat khi su dung
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //hien thi
         frame.setVisible(true); 
-        
-        ///nam giua man hinh
-        frame.setLocationRelativeTo(null);
     }
     
     private void getNumb() {

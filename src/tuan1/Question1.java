@@ -19,7 +19,10 @@ public class Question1 {
         this.iNumbTwo = iNumbTwo;
     }
 
-    // return true if it is Integer
+    /**
+     * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
+     * @return true nếu là kiểu dữ liệu số nguyên
+     */
     public static boolean isInteger(String var) {
         try {  
             Integer.parseInt(var);  
@@ -32,22 +35,18 @@ public class Question1 {
         }
     }
     
-    // sum of number 1 and number 2
     public int sum() {
         return this.iNumbOne + this.iNumbTwo;
     }
     
-    // difference of number 1 and number 2
     public int difference() {
         return this.iNumbOne - this.iNumbTwo;
     }	
     
-    // product of number 1 and number 2
     public int product(){
         return this.iNumbOne * this.iNumbTwo;
     }
     
-    // quotient of number 1 and number 2
     public double quotient(){
         return this.iNumbOne / this.iNumbTwo;
     }
