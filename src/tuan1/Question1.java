@@ -2,7 +2,9 @@ package tuan1;
 
 import java.util.Scanner;
 
-//Viết chương trình nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.
+/**
+ * Viết chương trình nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.
+ */
 public class Question1 {
     private int iNumbOne;
     private int iNumbTwo;
