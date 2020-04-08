@@ -107,11 +107,11 @@ public class InterfaceQuestion1 {
             }
         });
         
-        lblNumb1.addKeyListener(new KeyAdapter() {
+        tfNumb1.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed (KeyEvent e) {
-                if ( e.getKeyCode() == KeyEvent.VK_ENTER ) {
-                    lblNumb2.requestFocus();
+            public void keyPressed(KeyEvent e) {
+                if ( e.getKeyCode() == 10 ) {
+                    tfNumb2.requestFocus();
                 }
             }
         });
