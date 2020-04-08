@@ -2,8 +2,10 @@ package tuan1;
 
 import java.util.Scanner;
 
-//  Viết chương trình nhập số tự nhiên N, 
-//  kiểm tra và xuất kết quả N là số nguyên tố hay không.
+/**
+ * Viết chương trình nhập số tự nhiên N, 
+ * kiểm tra và xuất kết quả N là số nguyên tố hay không.
+ */
 public class Question6 {
     private int iNumber;
     
@@ -17,7 +19,10 @@ public class Question6 {
         this.iNumber = iNumber;
     }
     
-    // return true if it is Integer
+    /**
+     * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
+     * @return true nếu là kiểu dữ liệu số nguyên
+     */
     public static boolean isInteger(String var) {
         try {  
             Integer.parseInt(var);  

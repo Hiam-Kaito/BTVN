@@ -2,12 +2,14 @@ package tuan1;
 
 import java.util.Scanner;
 
-//  Viết chương trình nhập số tự nhiên N, xuất kết quả :
-//  a. Các số tự nhiên <=N và tổng của chúng
-//  b. Các số tự nhiên chẵn <=N và tổng của chúng
-//  c. Các số tự nhiên lẻ <=N và tổng của chúng
-//  d. Các số tự nhiên là số nguyên tố <=N và tổng của chúng
-//  e. N số nguyên tố đầu tiên
+/**
+ * Viết chương trình nhập số tự nhiên N, xuất kết quả :<br>
+ * a. Các số tự nhiên &lt;=N và tổng của chúng<br>
+ * b. Các số tự nhiên chẵn &lt;=N và tổng của chúng<br>
+ * c. Các số tự nhiên lẻ &lt;=N và tổng của chúng<br>
+ * d. Các số tự nhiên là số nguyên tố &lt;=N và tổng của chúng<br>
+ * e. N số nguyên tố đầu tiên<br>
+ */
 public class Question7 {
     private int iNumber;
     
@@ -21,7 +23,10 @@ public class Question7 {
         this.iNumber = iNumber;
     }
     
-    // return true if it is Integer
+    /**
+     * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
+     * @return true nếu là kiểu dữ liệu số nguyên
+     */
     public static boolean isInteger(String var) {
         try {  
             Integer.parseInt(var);  
@@ -35,9 +40,8 @@ public class Question7 {
     }
     
     /**
-     * 
-     * @param iNumber
-     * @return true nếu là số chẵn
+     * kiểm sự chẵn lẻ của số đầu vào
+     * @return là số chẵn
      */
     public boolean isEvenNumber(int iNumber) {
         if ( iNumber % 2 == 0 )
@@ -47,8 +51,8 @@ public class Question7 {
     
     /**
      * 
-     * @param iNumber
-     * @return true nếu là số nguyên tố
+     * kiểm tra xem đó có phải là số nguyên tố hay không
+     * @return true là số nguyên tố
      */
     public boolean isPrimeNumber(int iNumber) {
 	if( iNumber < 2 )

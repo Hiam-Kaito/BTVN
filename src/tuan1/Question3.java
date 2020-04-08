@@ -2,8 +2,9 @@ package tuan1;
 
 import java.util.Scanner;
 
-//  Viết chương trình nhập bán kính hình tròn, 
-//  xuất chu vi, diện tích của hình tròn đó.
+/**
+ * Viết chương trình nhập bán kính hình tròn, xuất chu vi, diện tích của hình tròn đó.
+ */
 public class Question3 {
     private double dRadius;
     
@@ -17,7 +18,10 @@ public class Question3 {
         this.dRadius = dRadius;
     }
 
-    // return true if it is Double
+    /**
+     * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
+     * @return true nếu là kiểu dữ liệu số Double
+     */
     public static boolean isNumeric(String var) {
         try {  
             Double.parseDouble(var);  
@@ -30,12 +34,10 @@ public class Question3 {
         }
     }
     
-    // 2 * R * pi
     public double circumference() {
         return 2 * this.dRadius * 3.14;
     }
     
-    // R * R * pi
     public double area() {
         return this.dRadius * this.dRadius * 3.14;
     }

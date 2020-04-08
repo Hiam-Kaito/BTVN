@@ -2,9 +2,11 @@ package tuan1;
 
 import java.util.Scanner;
 
-//  Viết chương trình nhập số nguyên N, 
-//  kiểm tra và xuất kết quả N là số
-//  âm/zero/dương
+/**
+ * Viết chương trình nhập số nguyên N, 
+ * kiểm tra và xuất kết quả N là số
+ * âm/zero/dương
+ */
 public class Question5 {
     private int iNumber;
     
@@ -18,7 +20,10 @@ public class Question5 {
         this.iNumber = iNumber;
     }
     
-    // return true if it is Integer
+    /**
+     * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
+     * @return true nếu là kiểu dữ liệu số nguyên
+     */
     public static boolean isInteger(String var) {
         try {  
             Integer.parseInt(var);  

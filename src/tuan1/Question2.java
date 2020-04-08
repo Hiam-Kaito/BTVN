@@ -2,8 +2,10 @@ package tuan1;
 
 import java.util.Scanner;
 
-//  Viết chương trình nhập chiều dài, chiều rộng hình chữ nhật,
-//  xuất chu vi, diện tích của hình chữ nhật đó.
+/**
+ * Viết chương trình nhập chiều dài, chiều rộng hình chữ nhật, xuất chu vi, diện tích
+ * của hình chữ nhật đó.
+ */
 public class Question2 {
     private int iLength;
     private int iWitdh;
@@ -20,7 +22,10 @@ public class Question2 {
        this.iWitdh = iWitdh;
     }
 
-    // return true if it is Integer
+    /**
+     * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
+     * @return true nếu là kiểu dữ liệu số nguyên
+     */
     public static boolean isInteger(String var) {
         try {  
             Integer.parseInt(var);  
@@ -40,12 +45,10 @@ public class Question2 {
         return false;
     }
     
-    // ( length + witdh ) x 2
     public int circumference() {
         return ( this.iLength + this.iWitdh ) * 2;
     }
     
-    // length * witdh
     public int area() {
         return this.iLength * this.iWitdh;
     }
@@ -66,4 +69,4 @@ public class Question2 {
         this.iWitdh = iWitdh;
     }
 
-    }
+}
