@@ -8,7 +8,8 @@
 ## Solution
 
 ### BUỔI 1
-| # | Title | Solution |
-|---| ----- | -------- |
+| # |   Title   | Solution |
+|---| --------- | -------- |
 |1|Tuần 0| [Java](./src/tuan1) | 
 |2|Tuần 2| [Java](./src/tuan2) |
+|3|Tuần 3| [Java Swing](./src/tuan3) |
