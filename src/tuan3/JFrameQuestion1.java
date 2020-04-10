@@ -120,7 +120,9 @@ public class JFrameQuestion1 extends JFrame{
     
 //    
     private void actionbtnExit() {
-        System.exit(0);
+        JFrameMain frame = new JFrameMain();
+        frame.setVisible(true);
+        setVisible(false);
     }
     
     private void actionbtnDelete(){
