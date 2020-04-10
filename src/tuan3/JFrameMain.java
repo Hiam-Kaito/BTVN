@@ -22,7 +22,7 @@ public class JFrameMain extends JFrame{
         
 //      panel buttons and  buttons
         pButton.setLayout(new GridLayout(2, 4));
-        pButton.setBounds(0, iWinWitdh/7, iWinHeight, 400);
+        pButton.setBounds(0, iWinWitdh/7, iWinHeight, 420);
         
         for (int i=0 ; i <8 ; i++) {
             btnQuestion[i] = new JButton("Question "+(i+1));
@@ -77,45 +77,44 @@ public class JFrameMain extends JFrame{
     private void actionButtons (int iKey) {
         switch (iKey) {
             case 0:
-                JFrameQuestion1 frame = new JFrameQuestion1();
-                frame.setVisible(true);
+                JFrameQuestion1 frame0 = new JFrameQuestion1();
+                frame0.setVisible(true);
                 setVisible(false);
                 break;
-//            case 1:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
-//            case 2:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
-//            case 3:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
-//            case 4:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
-//            case 5:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
-//            case 6:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
-//            case 7:
-//                JFrameQuestion1 frame = new JFrameQuestion1();
-//                frame.setVisible(true);
-//                setVisible(false);
-//                break;
+            case 1:
+                JFrameQuestion2 frame1 = new JFrameQuestion2();
+                frame1.setVisible(true);
+                setVisible(false);
+                break;
+            case 2:
+                JFrameQuestion3 frame2 = new JFrameQuestion3();
+                frame2.setVisible(true);
+                setVisible(false);
+                break;
+            case 3:
+                JFrameQuestion4 frame3 = new JFrameQuestion4();
+                frame3.setVisible(true);
+                setVisible(false);
+                break;
+            case 4:
+                JFrameQuestion5 frame4 = new JFrameQuestion5();
+                frame4.setVisible(true);
+                setVisible(false);
+                break;
+            case 5:
+                JFrameQuestion6 frame5 = new JFrameQuestion6();
+                frame5.setVisible(true);
+                setVisible(false);
+                break;
+            case 6:
+                JFrameQuestion7 frame6 = new JFrameQuestion7();
+                setVisible(false);
+                break;
+            case 7:
+                JFrameQuestion1 frame7 = new JFrameQuestion1();
+                frame7.setVisible(true);
+                setVisible(false);
+                break;
         }
     }
     

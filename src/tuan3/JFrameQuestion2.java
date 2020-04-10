@@ -4,9 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class JFrameQuestion1 extends JFrame{
+public class JFrameQuestion2 extends JFrame{
 
-    public JFrameQuestion1() {
+    public JFrameQuestion2() {
         initComponents();
     }
     
@@ -27,10 +27,8 @@ public class JFrameQuestion1 extends JFrame{
         pTop.add(tfdNumb1);
         pTop.add(tfdNumb2);
         pTop.add(lbl);
-        pTop.add(rbtnCong);
-        pTop.add(rbtnTru);
-        pTop.add(rbtnNhan);
-        pTop.add(rbtnChia);
+        pTop.add(rbtnCV);
+        pTop.add(rbtnDT);
         pTop.add(btnSol);
         
 //        JPanel bottom
@@ -101,20 +99,14 @@ public class JFrameQuestion1 extends JFrame{
         });
         
 //        Button group
-        rbtnCong.setBounds(iWinHeight/6, iWinWitdh/3, 200, 50);
-        rbtnTru.setBounds(iWinHeight/3, iWinWitdh/3, 200, 50);
-        rbtnNhan.setBounds(iWinHeight/6, iWinWitdh/2, 200, 50);
-        rbtnChia.setBounds(iWinHeight/3, iWinWitdh/2, 200, 50);
+        rbtnCV.setBounds(iWinHeight/6, iWinWitdh/3, 200, 50);
+        rbtnDT.setBounds(iWinHeight/6, iWinWitdh/2, 200, 50);
         
-        rbtnCong.setFont(Arial);
-        rbtnTru.setFont(Arial);
-        rbtnNhan.setFont(Arial);
-        rbtnChia.setFont(Arial);
+        rbtnCV.setFont(Arial);
+        rbtnDT.setFont(Arial);
         
-        grpbtn.add(rbtnCong);
-        grpbtn.add(rbtnTru);
-        grpbtn.add(rbtnNhan);
-        grpbtn.add(rbtnChia);
+        grpbtn.add(rbtnCV);
+        grpbtn.add(rbtnDT);
 //        End
     }
     
@@ -129,49 +121,42 @@ public class JFrameQuestion1 extends JFrame{
         tfdNumb1.setText("");
         tfdNumb2.setText("");
         tfdNumb1.requestFocus();
-        lbl.setText("Nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.");
+        lbl.setText(strTieuDe);
     }
     
     private void actionbtnSol(){
-        Q.setiNumbOne( Integer.parseInt(tfdNumb1.getText()) );
-        Q.setiNumbTwo( Integer.parseInt(tfdNumb2.getText()) );
+        Q.setiLength(Integer.parseInt(tfdNumb1.getText()) );
+        Q.setiWitdh(Integer.parseInt(tfdNumb2.getText()) );
         
-        if (rbtnCong.isSelected()) {
-            lbl.setText( String.valueOf(Q.sum()) );
+        if (rbtnCV.isSelected()) {
+            lbl.setText( String.valueOf(Q.circumference()) );
         }
-        if (rbtnTru.isSelected()) {
-            lbl.setText( String.valueOf(Q.difference()) );
-        }
-        if (rbtnNhan.isSelected()) {
-            lbl.setText( String.valueOf(Q.product()) );
-        }
-        if (rbtnChia.isSelected()) {
-            lbl.setText( String.valueOf(Q.quotient()) );
+        if (rbtnDT.isSelected()) {
+            lbl.setText( String.valueOf(Q.area()) );
         }
     }
     
 //    
     public static void main(String[] args){
-        new JFrameQuestion1().setVisible(true);
+        new JFrameQuestion2().setVisible(true);
     }
 //    
     
 //    Đừng cố mà thay đổi
     private int iWinHeight = 1280;
     private int iWinWitdh  = 640;
-    private Question1 Q = new Question1();
+    private String strTieuDe = "Nhập chiều dài, chiều rộng hình chữ nhật.";
+    private Question2 Q = new Question2();
     private Font Arial = new Font("Arial", Font.BOLD, 30);
     private JPanel pTop = new JPanel();
     private JPanel pBot = new JPanel();
     private JButton btnDelete = new JButton("Xóa tất cả số");
     private JButton btnExit = new JButton("Thoát");
-    private JLabel lbl = new JLabel("Nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.");
+    private JLabel lbl = new JLabel(strTieuDe);
     private JTextField tfdNumb1 = new JTextField();
     private JTextField tfdNumb2 = new JTextField();
-    private JRadioButton rbtnCong = new JRadioButton("Cộng");
-    private JRadioButton rbtnTru = new JRadioButton("Trừ");
-    private JRadioButton rbtnNhan = new JRadioButton("Nhân");
-    private JRadioButton rbtnChia = new JRadioButton("Chia");
+    private JRadioButton rbtnCV = new JRadioButton("Chu Vi");
+    private JRadioButton rbtnDT = new JRadioButton("Diện Tích");
     private ButtonGroup grpbtn = new ButtonGroup();
     private JButton btnSol = new JButton("Tính");
 //    End.
