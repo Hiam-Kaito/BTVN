@@ -124,7 +124,9 @@ public class JFrameQuestion2 extends JFrame{
         lbl.setText(strTieuDe);
     }
     
-    private void actionbtnSol(){
+    private boolean actionbtnSol(){
+        if ( !Q.isInteger( tfdNumb1.getText()) || !Q.isInteger( tfdNumb2.getText()) ) 
+            return false;
         Q.setiLength(Integer.parseInt(tfdNumb1.getText()) );
         Q.setiWitdh(Integer.parseInt(tfdNumb2.getText()) );
         
@@ -134,6 +136,7 @@ public class JFrameQuestion2 extends JFrame{
         if (rbtnDT.isSelected()) {
             lbl.setText( String.valueOf(Q.area()) );
         }
+        return true;
     }
     
 //    

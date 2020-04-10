@@ -99,7 +99,9 @@ public class JFrameQuestion5 extends JFrame{
         lbl.setText(strTieuDe);
     }
     
-    private void actionbtnSol(){
+    private boolean actionbtnSol(){
+        if ( !Q.isInteger( tfdRadius.getText()) ) 
+            return false;
         Q.setiNumber( Integer.parseInt(tfdRadius.getText()) );
         
         if ( Q.getiNumber() == 0) {
@@ -113,6 +115,7 @@ public class JFrameQuestion5 extends JFrame{
                 lbl.setText("Là số âm");
             } 
         }
+        return true;
     }
     
 //    

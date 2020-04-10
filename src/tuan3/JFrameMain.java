@@ -108,12 +108,14 @@ public class JFrameMain extends JFrame{
                 break;
             case 6:
                 JFrameQuestion7 frame6 = new JFrameQuestion7();
+                frame6.setVisible(true);
                 setVisible(false);
                 break;
             case 7:
-                JFrameQuestion1 frame7 = new JFrameQuestion1();
-                frame7.setVisible(true);
-                setVisible(false);
+//                JFrameQuestion1 frame7 = new JFrameQuestion1();
+//                frame7.setVisible(true);
+//                setVisible(false);
+                JOptionPane.showMessageDialog(null, "Coming soon...see u late", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
         }
     }

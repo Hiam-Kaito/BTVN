@@ -24,7 +24,7 @@ public class JFrameQuestion4 extends JFrame{
         pTop.setBounds(0, 0, iWinHeight, 500);
         pTop.setLayout(null);
         
-        pTop.add(tfdRadius);
+        pTop.add(tfdNumb);
         pTop.add(lbl);
         pTop.add(btnSol);
         
@@ -71,10 +71,10 @@ public class JFrameQuestion4 extends JFrame{
         lbl.setBounds(iWinHeight/5, iWinWitdh/100, iWinHeight, 100);
         
 //        text field number 1
-        tfdRadius.setFont(Arial);
-        tfdRadius.setBounds(iWinHeight/5, iWinWitdh/5, 200, 50);
+        tfdNumb.setFont(Arial);
+        tfdNumb.setBounds(iWinHeight/5, iWinWitdh/5, 200, 50);
         
-        tfdRadius.addKeyListener(new KeyAdapter() {
+        tfdNumb.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent key){
                 if (key.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -94,13 +94,16 @@ public class JFrameQuestion4 extends JFrame{
     }
     
     private void actionbtnDelete(){
-        tfdRadius.setText("");
-        tfdRadius.requestFocus();
+        tfdNumb.setText("");
+        tfdNumb.requestFocus();
         lbl.setText(strTieuDe);
     }
     
-    private void actionbtnSol(){
-        Q.setiNumber( Integer.parseInt(tfdRadius.getText()) );
+    private boolean actionbtnSol(){
+        if ( !Q.isInteger( tfdNumb.getText()) ) 
+            return false;
+        
+        Q.setiNumber( Integer.parseInt(tfdNumb.getText()));
         
         if ( Q.isEvenNumber()) {
             lbl.setText("Là số chẵn");
@@ -108,6 +111,7 @@ public class JFrameQuestion4 extends JFrame{
         else {
             lbl.setText("Là số lẻ");
         }
+        return true;
     }
     
 //    
@@ -127,7 +131,7 @@ public class JFrameQuestion4 extends JFrame{
     private JButton btnDelete = new JButton("Xóa tất cả số");
     private JButton btnExit = new JButton("Thoát");
     private JLabel lbl = new JLabel(strTieuDe);
-    private JTextField tfdRadius = new JTextField();
+    private JTextField tfdNumb = new JTextField();
     private JButton btnSol = new JButton("Kiểm tra");
 //    End.
 }

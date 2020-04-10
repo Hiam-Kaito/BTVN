@@ -99,7 +99,9 @@ public class JFrameQuestion6 extends JFrame{
         lbl.setText(strTieuDe);
     }
     
-    private void actionbtnSol(){
+    private boolean actionbtnSol(){
+        if ( !Q.isInteger( tfdRadius.getText()) ) 
+            return false;
         Q.setiNumber( Integer.parseInt(tfdRadius.getText()) );
         
         if ( Q.isPrimeNumber() ) {
@@ -108,6 +110,7 @@ public class JFrameQuestion6 extends JFrame{
         else {
             lbl.setText("Không phải là số nguyên tố");
         }
+        return true;
     }
     
 //    

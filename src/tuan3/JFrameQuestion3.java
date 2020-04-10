@@ -110,7 +110,9 @@ public class JFrameQuestion3 extends JFrame{
         lbl.setText(strTieuDe);
     }
     
-    private void actionbtnSol(){
+    private boolean actionbtnSol(){
+        if ( !Q.isNumeric(tfdRadius.getText()) ) 
+            return false;
         Q.setdRadius( Double.parseDouble(tfdRadius.getText()) );
         
         if (rbtnCV.isSelected()) {
@@ -119,6 +121,7 @@ public class JFrameQuestion3 extends JFrame{
         if (rbtnDT.isSelected()) {
             lbl.setText( String.valueOf(Q.area()) );
         }
+        return true;
     }
     
 //    

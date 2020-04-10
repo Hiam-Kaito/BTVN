@@ -132,7 +132,9 @@ public class JFrameQuestion1 extends JFrame{
         lbl.setText("Nhập 2 số nguyên, xuất tổng, hiệu, tích, thương.");
     }
     
-    private void actionbtnSol(){
+    private boolean actionbtnSol(){
+        if ( !Q.isInteger( tfdNumb1.getText()) || !Q.isInteger( tfdNumb2.getText()) ) 
+            return false;
         Q.setiNumbOne( Integer.parseInt(tfdNumb1.getText()) );
         Q.setiNumbTwo( Integer.parseInt(tfdNumb2.getText()) );
         
@@ -148,6 +150,7 @@ public class JFrameQuestion1 extends JFrame{
         if (rbtnChia.isSelected()) {
             lbl.setText( String.valueOf(Q.quotient()) );
         }
+        return true;
     }
     
 //    
