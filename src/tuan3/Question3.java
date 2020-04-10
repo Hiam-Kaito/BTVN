@@ -22,7 +22,7 @@ public class Question3 {
      * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
      * @return true nếu là kiểu dữ liệu số Double
      */
-    public static boolean isNumeric(String var) {
+    public boolean isNumeric(String var) {
         try {  
             Double.parseDouble(var);  
             return true;

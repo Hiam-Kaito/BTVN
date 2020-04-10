@@ -25,7 +25,7 @@ public class Question1 {
      * Kiểm tra tham số truyền vào là kiễu dữ liệu nào
      * @return true nếu là kiểu dữ liệu số nguyên
      */
-    public static boolean isInteger(String var) {
+    public boolean isInteger(String var) {
         try {  
             Integer.parseInt(var);  
             return true;
