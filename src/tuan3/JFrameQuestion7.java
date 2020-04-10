@@ -3,130 +3,127 @@ package tuan3;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
 
-public class JFrameQuestion7 {
-    JTextField tfTop ;
-    Question7 Q;
-     
+public class JFrameQuestion7 extends JFrame{
+
     public JFrameQuestion7() {
-        JFrame frame = new JFrame("Question 7");
-        Q = new Question7();
-        Font Arial = new Font("Arial",Font.BOLD,20);
+        initComponents();
+    }
+    
+    private void initComponents() {
+//        JFrame
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(iWinHeight, iWinWitdh);
+        setLocation(50, 0);
+        setLayout(null);
         
-        Panel pTop = new Panel();
-        Label lblTop = new Label("Nhập số tự nhiên N, xuất ra các số tự nhiên <=N và");
-        tfTop = new JTextField();
+        add(pTop);
+        add(pBot);
         
-        Panel pDisplay = new Panel();
-        TextArea txtareaDisplay = new TextArea("0");
-        
-        //  a. Các số tự nhiên <=N và tổng của chúng
-        //  b. Các số tự nhiên chẵn <=N và tổng của chúng
-        //  c. Các số tự nhiên lẻ <=N và tổng của chúng
-        //  d. Các số tự nhiên là số nguyên tố <=N và tổng của chúng
-        //  e. N số nguyên tố đầu tiên
-        Panel pButtons = new Panel();
-        JButton[] buttons = new JButton[5];
+//        Buttons
         buttons[0] = new JButton("tổng của chúng");
         buttons[1] = new JButton("là số chẵn và tổng của chúng");
         buttons[2] = new JButton("Là số lẻ và tổng của chúng");        
         buttons[3] = new JButton("Là số nguyên tố <=N và tổng của chúng");
         buttons[4] = new JButton("N số nguyên tố đầu tiên");
         
-        Panel pBottom = new Panel();
-        JButton btnExit = new JButton("Trở về");
-                
-        ////////////////////////////////////////
-        lblTop.setFont(Arial);
-        tfTop.setFont(Arial);
-        txtareaDisplay.setFont(Arial);
         for (int i = 0 ; i < 5 ; i++){
             buttons[i].setFont(Arial);
         }
-        btnExit.setFont(Arial);
-        /////////////////////////////////////////
         
-        frame.setLayout(new GridLayout(4, 1));
-        frame.add(pTop);
-        frame.add(pDisplay);
-        frame.add(pButtons);
-        frame.add(pBottom);
+        pButtons.setLayout(new GridLayout(3, 3));
+        pButtons.setBounds(0, iWinWitdh/2, iWinHeight, 180);
         
-        pTop.add(lblTop);
-        pTop.add(tfTop);
-        pTop.setBackground(Color.ORANGE);
-        pTop.setLayout(new GridLayout(2, 1));
-        
-        pDisplay.setBackground(Color.CYAN);
-        pDisplay.setLayout(new GridLayout(1,1));
-        pDisplay.add(txtareaDisplay);
-        
-        pButtons.setLayout(new GridLayout(2, 3));
-        pButtons.setBackground(Color.yellow);
         for (int i = 0 ; i < 5 ; i++){
             pButtons.add( buttons[i] );
         }
         
-        pBottom.add(btnExit);
-        pBottom.setLayout(new GridLayout(1, 1));
+        for (int i = 0 ; i < 5 ; i++){
+            int iKey = i;
+            buttons[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    txtArea.setText( getNumb_Export(iKey) );
+                }
+            });
+        }
+//        text area
+        txtArea.setFont(Arial);
+        txtArea.setBounds(0, iWinWitdh/4, iWinHeight-20, 150);
+
+//        JPanel top
+        pTop.setBounds(0, 0, iWinHeight, 500);
+        pTop.setLayout(null);
         
-        ///////////////////////////////////////////
-        buttons[0].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String string = getNumb_Export(0);
-                txtareaDisplay.setText(string);
-            }
-        });
-        buttons[1].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String string = getNumb_Export(1);
-                txtareaDisplay.setText(string);
-            }
-        });
-        buttons[2].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String string = getNumb_Export(2);
-                txtareaDisplay.setText(string);
-            }
-        });
-        buttons[3].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String string = getNumb_Export(3);
-                txtareaDisplay.setText(string);
-            }
-        });
-        buttons[4].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String string = getNumb_Export(4);
-                txtareaDisplay.setText(string);
-            }
-        });
+        pTop.add(tfdNumb);
+        pTop.add(lbl);
+        pTop.add(pButtons);
+        pTop.add(txtArea);
+        
+//        JPanel bottom
+        pBot.setBounds(0, 500, iWinHeight, 100);
+        pBot.setLayout(new GridLayout(1, 2));
+        
+        pBot.add(btnDelete);
+        pBot.add(btnExit);
+        
+//        Button Exit
+        btnExit.setFont(Arial);
+        
         btnExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                frame.setVisible(false);
-                JFrameMain A = new JFrameMain();
-                A.setVisible(true);
+                actionbtnExit();
             }
         });
-        ///////////////////////////////////////////
+        
+//        Button Delete
+        btnDelete.setFont(Arial);
+        
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionbtnDelete();
+            }
+        });
+        
+
+//        label
+        lbl.setFont(Arial);
+        lbl.setBounds(iWinHeight/10, iWinWitdh/100, iWinHeight, 100);
+        
+//        text field number 1
+        tfdNumb.setFont(Arial);
+        tfdNumb.setBounds(iWinHeight/9, iWinWitdh/9, 200, 50);
+        
+        tfdNumb.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent key){
+                if (key.getKeyCode() == KeyEvent.VK_ENTER) {
+                }
+            }
+        });
+        
+//        End
+    }
+    
+//    
+    private void actionbtnExit() {
+        JFrameMain frame = new JFrameMain();
         frame.setVisible(true);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(false);
     }
     
     public String getNumb_Export(int ikey) {
         String string = "";
         int tong = 0 , count = 0, cols = 20;
-        int N = Q.getiNumber();
         
-        Q.setiNumber( Integer.parseInt( tfTop.getText() ) );
+        if ( !Q.isInteger( tfdNumb.getText()) ) 
+            return null;
+        
+        Q.setiNumber( Integer.parseInt( tfdNumb.getText() ) );
+        
+        int N = Q.getiNumber();
         
         if ( ikey == 4 ) {
             
@@ -199,4 +196,34 @@ public class JFrameQuestion7 {
 
         return string;
     }
+    
+    private void actionbtnDelete(){
+        tfdNumb.setText("");
+        txtArea.setText("");
+        tfdNumb.requestFocus();
+        lbl.setText(strTieuDe);
+    }
+    
+//    
+    public static void main(String[] args){
+        new JFrameQuestion7().setVisible(true);
+    }
+//    
+    
+//    Đừng cố mà thay đổi
+    private int iWinHeight = 1280;
+    private int iWinWitdh  = 640;
+    private String strTieuDe = "Nhập số tự nhiên N, xuất ra các số tự nhiên <=N và";
+    private Question7 Q = new Question7();
+    private Font Arial = new Font("Arial", Font.BOLD, 30);
+    private JPanel pTop = new JPanel();
+    private JPanel pBot = new JPanel();
+    private JButton btnDelete = new JButton("Xóa tất cả số");
+    private JButton btnExit = new JButton("Thoát");
+    private JLabel lbl = new JLabel(strTieuDe);
+    private JTextField tfdNumb = new JTextField();
+    private JPanel pButtons = new JPanel();
+    private JButton[] buttons = new JButton[5];
+    private TextArea txtArea = new TextArea();
+//    End.
 }
