@@ -1,6 +1,5 @@
 package tuan3;
 
-import tuan1.*;
 import java.util.Scanner;
 
 /**
