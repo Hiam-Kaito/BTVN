@@ -133,8 +133,11 @@ public class JFrameQuestion1 extends JFrame{
     }
     
     private boolean actionbtnSol(){
-        if ( !Q.isInteger( tfdNumb1.getText()) || !Q.isInteger( tfdNumb2.getText()) ) 
+        if ( !Q.isInteger( tfdNumb1.getText()) || !Q.isInteger( tfdNumb2.getText()) ) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập số", "ERROR", JOptionPane.ERROR_MESSAGE);
+            tfdNumb1.requestFocus();
             return false;
+        }
         Q.setiNumbOne( Integer.parseInt(tfdNumb1.getText()) );
         Q.setiNumbTwo( Integer.parseInt(tfdNumb2.getText()) );
         

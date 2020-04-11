@@ -100,8 +100,11 @@ public class JFrameQuestion4 extends JFrame{
     }
     
     private boolean actionbtnSol(){
-        if ( !Q.isInteger( tfdNumb.getText()) ) 
+        if ( !Q.isInteger( tfdNumb.getText()) ) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập số", "ERROE", JOptionPane.ERROR_MESSAGE);
+            tfdNumb.requestFocus();
             return false;
+        }
         
         Q.setiNumber( Integer.parseInt(tfdNumb.getText()));
         

@@ -100,8 +100,11 @@ public class JFrameQuestion5 extends JFrame{
     }
     
     private boolean actionbtnSol(){
-        if ( !Q.isInteger( tfdRadius.getText()) ) 
+        if ( !Q.isInteger( tfdRadius.getText()) ) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập số", "ERROE", JOptionPane.ERROR_MESSAGE);
+            tfdRadius.requestFocus();
             return false;
+        }
         Q.setiNumber( Integer.parseInt(tfdRadius.getText()) );
         
         if ( Q.getiNumber() == 0) {

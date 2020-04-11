@@ -125,8 +125,11 @@ public class JFrameQuestion2 extends JFrame{
     }
     
     private boolean actionbtnSol(){
-        if ( !Q.isInteger( tfdNumb1.getText()) || !Q.isInteger( tfdNumb2.getText()) ) 
+        if ( !Q.isInteger( tfdNumb1.getText()) || !Q.isInteger( tfdNumb2.getText()) ) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập số", "ERROE", JOptionPane.ERROR_MESSAGE);
+            tfdNumb1.requestFocus();
             return false;
+        }
         Q.setiLength(Integer.parseInt(tfdNumb1.getText()) );
         Q.setiWitdh(Integer.parseInt(tfdNumb2.getText()) );
         

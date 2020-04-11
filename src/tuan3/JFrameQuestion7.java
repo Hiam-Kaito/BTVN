@@ -118,8 +118,11 @@ public class JFrameQuestion7 extends JFrame{
         String string = "";
         int tong = 0 , count = 0, cols = 20;
         
-        if ( !Q.isInteger( tfdNumb.getText()) ) 
+        if ( !Q.isInteger( tfdNumb.getText()) ) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập số", "ERROE", JOptionPane.ERROR_MESSAGE);
+            tfdNumb.requestFocus();
             return null;
+        }
         
         Q.setiNumber( Integer.parseInt( tfdNumb.getText() ) );
         

@@ -111,8 +111,11 @@ public class JFrameQuestion3 extends JFrame{
     }
     
     private boolean actionbtnSol(){
-        if ( !Q.isNumeric(tfdRadius.getText()) ) 
+        if ( !Q.isNumeric(tfdRadius.getText()) ) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập số", "ERROE", JOptionPane.ERROR_MESSAGE);
+            tfdRadius.requestFocus();
             return false;
+        }
         Q.setdRadius( Double.parseDouble(tfdRadius.getText()) );
         
         if (rbtnCV.isSelected()) {
