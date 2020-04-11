@@ -10,7 +10,7 @@ import java.util.Scanner;
  * d. Các phần tử là số nguyên tố của mảng a và tổng của chúng<br>
  * e. Thêm 1 phần tử mới vào mảng<br>
  * f. Xoá phần tử thứ k của mảng a<br>
- * g. nhập 1 số x, kiểm tra x có trong mảng a không, nếu có thì trả về vị trí của<br>
+ * g. nhập 1 số x, kiểm tra x có trong mảng a không, nếu có thì trả về vị trí của
  * x trong mảng a<br>
  */
 public class Question8 {
