@@ -26,31 +26,33 @@ public class JFrameQuestion8 extends JFrame{
         
         pTop.add(lbl);
         pTop.add(tfdNumb);
+        pTop.add(lblRes);
+        pTop.add(tfdRes);
         
 //        label 
         lbl.setFont(Arial);
         lbl.setBounds(0, 0, 300, 50);
         
+        lblRes.setFont(Arial);
+        lblRes.setBounds(500, 0, 300, 50);
+        
 //        text field
         tfdNumb.setFont(Arial);
         tfdNumb.setBounds(300, 5, 100, 50);
+        
+        tfdRes.setFont(Arial);
+        tfdRes.setBounds(650, 5, 100, 50);
                 
 //        Arrays
-        Random rand = new Random();
-        for (int i=0 ; i<10 ; i++) {
-            int iKey = rand.nextInt(9);
-            btnArrays[i] = new JButton();
-            btnArrays[i].setText( String.valueOf(iKey) );
-            btnArrays[i].setFont(Arial);
-        }
+        createTextFieldArrays();
         
 //        Panel Arrays
-        pArrays.setBounds(0, 100, 1280, 320);
+        pArrays.setBounds(0, 100, 1280, 430);
         pArrays.setBackground(Color.cyan);
-        pArrays.setLayout(new GridLayout(2, iCols));
+        pArrays.setLayout(null);
         
-        for (int i=0 ; i<10 ; i++) {
-            pArrays.add( btnArrays[i] );
+        for (int i=0 ; i < tfdArrays.length ; i++) {
+            pArrays.add( tfdArrays[i] );
         }
 
 //        buttons
@@ -67,7 +69,7 @@ public class JFrameQuestion8 extends JFrame{
         }
         
 //        Panel buttons
-        pButtons.setBounds(0, 420, 1280, 280);
+        pButtons.setBounds(0, 530, 1280, 150);
         pButtons.setBackground(Color.black);
         pButtons.setLayout(new GridLayout(3, 2));
         
@@ -83,28 +85,112 @@ public class JFrameQuestion8 extends JFrame{
         btnExit.setFont(Arial);
         
 //        button 
+        for (int i=0 ; i < tfdArrays.length -1 ; i++) {
+            int iNext = i + 1;
+            tfdArrays[i].addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent key){
+                    if (key.getKeyCode() == KeyEvent.VK_ENTER) {
+                        tfdArrays[iNext].requestFocus();
+                    }
+                }
+            });
+        }
+        
+        tfdNumb.addKeyListener(new KeyAdapter() {
+            @Override
+                public void keyPressed(KeyEvent key){
+                    if (key.getKeyCode() == KeyEvent.VK_ENTER) {
+                        tfdArrays[0].requestFocus();
+                        newBie();
+                        addArraysToPanel();
+                    }
+                }
+        });
+
         btnList[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
-                for (int i=0 ; i <10 ; i++) {
-                    btnArrays[i].setVisible(false);
-                }
-                
-                iCols = Integer.parseInt(tfdNumb.getText());
-                pArrays.setLayout(new GridLayout(iCols, iCols));
-                
-                for (int i=0 ; i <10 ; i++) {
-                    btnArrays[i].setVisible(true);
-                }
-                
+               tinhtong();
             }
         });
                 
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionDelete();
+            }
+        });
 //        End
     }
     
+//  • ˚ ˚ ˛ ˚ ˛  • ˚ •˛•˚ * 。 • ˚ ˚ ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ 
+//  • ˚ ˚ ˛ ˚ ˛  • ˚Happy★* 。 • ˚ ˚ ˛ ˚ ˛ • ˚ ˛ ˛ ˚ ˛    ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ 
+// ˚ ˛˚ ˚ ˛ ˚ •˛  ˚ ˛•。★Holidays!★ 。* • ˚•。     • ˚ ˚ ˛ ˚ ˛     ˚ ˛ ˚ ˛  ˚ ˚ ˛ ˚ ˛  ˚ ˛ ˚ ˛  ˚ • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛
+//  • ˚ ˚ ˛ •˚ ˛  ° 。 ° ˛˚˛ *__Π____*。*˚     ˚ ˛ ˚ ˛ ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˚ ˛ ˚ ˛ 
+//   ˚ ˛˚ ˚ ˛ ˚ ˛  ˚ ˛ •˛•˚ */______/~＼。˚ ˚ ˛        ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ 
+//  • ˚ ˚ ˛ ˚ ˛   ˚˛• •˛• ˚ ｜ 田田 ｜門｜ ˚        • ˚ ˚ ˛ ˚ ˛   ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  
     
+    private void createTextFieldArrays() {
+        int toaDoXTextField = 0, toaDoYTextField = 0;
+        for (int i=0 ; i<tfdArrays.length ; i++) {
+            tfdArrays[i] = new JTextField();
+            tfdArrays[i].setFont(Arial);
+            tfdArrays[i].setBounds(toaDoXTextField, toaDoYTextField, 60, 60);
+            toaDoXTextField +=60;
+            if ( (i+1)%20 == 0) {
+                toaDoXTextField = 0;
+                toaDoYTextField += 60;
+            }
+        }
+    }
+
+    private void newBie() {
+        for (int i=0 ; i<tfdArrays.length ; i++) {
+            tfdArrays[i].setVisible(false);
+        }
+                
+        int iNumb = Integer.parseInt( tfdNumb.getText() );
+        tfdArrays = new JTextField[iNumb];
+        createTextFieldArrays();
+    }
+    
+    private void addArraysToPanel () {
+        for (int i=0 ; i < tfdArrays.length ; i++) {
+            pArrays.add( tfdArrays[i] );
+        }
+    }
+    
+    private void actionDelete() {
+        newBie();
+        tfdNumb.setText(null);
+        tfdRes.setText(null);
+        tfdNumb.requestFocus();
+    }
+    
+    private void loadArrays() {
+        int[] iArrays = new int[tfdArrays.length];
+        
+        for (int i=0 ; i < tfdArrays.length ; i++) {
+            iArrays[i] = Integer.parseInt( tfdArrays[i].getText() );
+        }
+        
+        Q.setiArrays(iArrays);
+        Q.setiNumber(iArrays.length);
+    }
+    
+    private void tinhtong() {
+        loadArrays();
+        tfdRes.setText( String.valueOf(Q.sum()));
+    }
+    
+    
+//  • ˚ ˚ ˛ ˚ ˛  • ˚ •˛•˚ * 。 • ˚ ˚ ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ 
+//  • ˚ ˚ ˛ ˚ ˛  • ˚Happy★* 。 • ˚ ˚ ˛ ˚ ˛ • ˚ ˛ ˛ ˚ ˛    ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ 
+// ˚ ˛˚ ˚ ˛ ˚ •˛  ˚ ˛•。★Holidays!★ 。* • ˚•。     • ˚ ˚ ˛ ˚ ˛     ˚ ˛ ˚ ˛  ˚ ˚ ˛ ˚ ˛  ˚ ˛ ˚ ˛  ˚ • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛
+//  • ˚ ˚ ˛ •˚ ˛  ° 。 ° ˛˚˛ *__Π____*。*˚     ˚ ˛ ˚ ˛ ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˚ ˛ ˚ ˛ 
+//   ˚ ˛˚ ˚ ˛ ˚ ˛  ˚ ˛ •˛•˚ */______/~＼。˚ ˚ ˛        ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛  ˛ ˚ ˛ • • ˚ ˚ ˛ ˚ ˚ ˛ ˚ ˛ 
+//  •
     
     public static void main(String[] args) {
         new JFrameQuestion8().setVisible(true);
@@ -122,7 +208,8 @@ public class JFrameQuestion8 extends JFrame{
     JButton[] btnList = new JButton[7];
     JLabel lbl = new JLabel(strTieuDe);
     JTextField tfdNumb = new JTextField("10");
-    JButton[] btnArrays = new JButton[100];
-    int iCols = 5;
+    JTextField[] tfdArrays = new JTextField[10];
+    JLabel lblRes = new JLabel("kết quả");
+    JTextField tfdRes = new JTextField();
 //    End.
 }

@@ -103,6 +103,15 @@ public class Question8 {
         setiNumber(iNumber-1);
     }
     
+    public int sum() {
+        int iSum=0;
+        for (int i=0 ; i < this.iNumber ; i++) {
+            iSum  = iSum + iArrays[i];
+        }
+        
+        return iSum;
+    }
+    
     /**
      * Trả về vị trí của số đó bắt đầu từ 1
      * @param iPos là gi
