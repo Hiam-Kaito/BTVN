@@ -34,7 +34,10 @@ public class Question4 {
             return false;  
         }
     }
-    
+    /**
+     * Kiểm tra là số chẵn hay lẻ
+     * @return trả về true nếu là số chẵn
+     */
     public boolean isEvenNumber() {
         if ( this.iNumber % 2 == 0 )
             return true;
