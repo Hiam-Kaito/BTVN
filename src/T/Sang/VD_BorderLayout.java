@@ -13,9 +13,9 @@ public class VD_BorderLayout extends JFrame{
     
     public void init() {
         Arial = new Font("Arial", Font.BOLD, 30);
-        ImageIcon imageGa = new ImageIcon("image/ga.png");
-        ImageIcon imageTim1 = new ImageIcon("image/tim1.png");
-        ImageIcon imageTim2 = new ImageIcon("image/tim3.png");
+        ImageIcon imageGa = new ImageIcon("./image/ga.png");
+        ImageIcon imageTim1 = new ImageIcon("./image/tim1.png");
+        ImageIcon imageTim2 = new ImageIcon("./image/tim3.png");
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
         JPanel p3 = new JPanel();

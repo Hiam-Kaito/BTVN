@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -33,78 +34,26 @@ public  class  clsGiaoDien implements ActionListener{
         f=new JFrame();
         f.setSize(400,400);
         f.setLayout(null);
-        //CreatePanel_SinhVien();
-        System.out.println("Width"+ f.getSize().getWidth());
-        JPanel header = CreatePanel_title(f);
-        header.setBounds(0, 0, f.getWidth(), 30);
-        JPanel content=CreatePanel_SinhVien();
         
-        //JPanel p2=CreatePanel_SinhVien();
+        
+        
+        
+        JPanel content=CreatePanel_SinhVien();
         content.setBounds(0, 100, 500, 250);
-        //p2.setBounds(40, 200, 400, 150);
-        content.setBackground(Color.red);
-        f.add(header);
         f.add(content);
-        //f.add(p2);
+        
+        
+        
         
         f.setVisible(true);
-        
+        f.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    public JPanel CreatePanel_title()
-    {
-        JPanel p1=new JPanel();
-        p1.setLayout(new FlowLayout(2, 0, 0));
-        p1.setBackground(Color.BLUE);
-        btntitle=new JButton[3];
-        String[] arrtitle = {"-", "4", "X"} ;
-        
-   
-        int toadox=f.getWidth();
-        System.out.println("Ưidth:"+toadox);
-        for(int i=0;i<arrtitle.length; i++)
-        {
-            //ImageIcon water = new ImageIcon("img/water.bmp");
-            btntitle [i] = new JButton(arrtitle[i]);
-            //btntitle [i] = new JButton(water);
-            //JButton button = new JButton(water);
-            btntitle[i].setName("btntitle"+i);
-            //btntitle [i].setBounds(i, 0, 50, 30);
-            p1.add(btntitle[i]);
-            btntitle[i].addActionListener((ActionListener) this);
-        }
-        return p1;
-    }
-    public JPanel CreatePanel_title(JFrame f)
-    {
-        JPanel p1=new JPanel();
-        p1.setLayout(new FlowLayout(2, 0, 0));
-        p1.setBackground(Color.BLUE);
-        btntitle=new JButton[3];
-        String[] arrtitle = {"-", "4", "X"} ;
-        
-   
-        int toadox=f.getWidth();
-        System.out.println("Ưidth:"+toadox);
-        for(int i=0;i<arrtitle.length; i++)
-        {
-            //ImageIcon water = new ImageIcon("img/water.bmp");
-            btntitle [i] = new JButton(arrtitle[i]);
-            //btntitle [i] = new JButton(water);
-            //JButton button = new JButton(water);
-            btntitle[i].setName("btntitle"+i);
-            //btntitle [i].setBounds(i, 0, 50, 30);
-            p1.add(btntitle[i]);
-            btntitle[i].addActionListener((ActionListener) this);
-        }
-        return p1;
-    }
-    //public JPanel CreatePanel_SinhVien(JLabel lblMaSV,JLabel lblHoTen, JLabel lblNamSinh,JTextField txtMaSV, JTextField txtHoTen,JTextField txtNamSinh)
-    public JPanel CreatePanel_SinhVien()
-    {
+    
+     public JPanel CreatePanel_SinhVien() {
         JPanel pSinhVien = new JPanel();
         buttons = new JButton[5];
         textfields=new JTextField[5];
-        String[] arrSinhVien = {"Mã SV", "Họ Tên", "Ngay Sinh","ASd","SAD"} ;       
+        String[] arrSinhVien = {"Mã SV", "Họ Tên"} ;       
         pSinhVien.setLayout(null);
         int toadoxButton=0,toadoyButton=10;
         int toadoxTextField=130, toadoyTextField=10;
