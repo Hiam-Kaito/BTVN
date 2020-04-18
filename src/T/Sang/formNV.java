@@ -43,6 +43,7 @@ public class formNV extends JFrame implements ActionListener{
         btnXoa = new JButton("Xóa");
         pContentLienHe = CreatePanel_LienHe();
         pContentBot = CreatePanel_Bot();
+        pContentHoChieu = CreatePanel_HoChieu();
         
 //        Jframe
         setLayout(null);
@@ -169,10 +170,12 @@ public class formNV extends JFrame implements ActionListener{
         pHoChieu.setLayout(new BorderLayout());
         
         pHoChieu.add(lblHoChieu, BorderLayout.NORTH);
+        pHoChieu.add(pContentHoChieu, BorderLayout.CENTER);
         
         lblHoChieu.setAlignment(Label.CENTER);
         lblHoChieu.setBackground(TieuDe);
         lblHoChieu.setFont(Arial);
+        
         
 //        panel thong tin lien he
         pLienHe.setBounds(10, 320, 1250, 150 );
@@ -252,6 +255,36 @@ public class formNV extends JFrame implements ActionListener{
             toadoyTextField = toadoyTextField + 35;
         }
         return pNhanVien; 
+    }
+    
+    private JPanel CreatePanel_HoChieu() {
+        JPanel HoChieu = new JPanel();
+        list_lblHoChieu = new JLabel[5];
+        list_tfHoChieu = new JTextField[5];
+        
+        HoChieu.setLayout(null);
+        
+        String[] arr = {"Số hộ chiếu", "Ngày cấp", "Nơi cấp","a"};
+        
+        int xLabel = 10, yLabel = 0;
+        int xText = 10, yText = 30;
+        
+        for (int i=0 ; i < arr.length ; i++) {
+            list_lblHoChieu[i] = new JLabel(arr[i]);
+            list_lblHoChieu[i].setFont(Arial);
+            list_lblHoChieu[i].setBounds(xLabel, yLabel, 100, 30);
+            
+            list_tfHoChieu[i] = new JTextField();
+            list_tfHoChieu[i].setFont(Arial);
+            list_tfHoChieu[i].setBounds(xText, yText, 100, 30);
+            
+            HoChieu.add(list_lblHoChieu[i]);
+            HoChieu.add(list_tfHoChieu[i]);
+            
+            xLabel += 160;
+            xText += 160;
+        }
+        return HoChieu;
     }
     
     private JPanel CreatePanel_LienHe() {
@@ -392,10 +425,10 @@ public class formNV extends JFrame implements ActionListener{
     private Color TieuDe;
     private JPanel pInfor, pCMND, pHoChieu, pLienHe, pBot, pImage , pChucNang, pButtonChucNang;
     private Label lblInfor, lblCMND, lblHoChieu, lblLienHe, lblBot, lblChucNang;
-    private JPanel pContentInfor,pContentLienHe, pContentBot;
+    private JPanel pContentInfor,pContentLienHe, pContentBot, pContentHoChieu;
     private ImageIcon image;
-    private JLabel[] list_lblInfor, list_lblLienHe, list_lblBot;
-    private JTextField[] list_tflInfor, list_tfLienHe, list_tfBot;
+    private JLabel[] list_lblInfor, list_lblLienHe, list_lblBot, list_lblHoChieu;
+    private JTextField[] list_tflInfor, list_tfLienHe, list_tfBot, list_tfHoChieu;
     private JComboBox<String>[] list_cbbLienHe, list_cbbBot; 
     private JTextField tfCMT, tfNgayCap;
     private JComboBox<String> cbbNoiCap;
