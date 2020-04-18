@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class formNV extends JFrame{
+public class formNV extends JFrame implements ActionListener{
     
     public formNV() {
         init();
@@ -42,6 +42,8 @@ public class formNV extends JFrame{
         btnThem = new JButton("Thêm");
         btnXoa = new JButton("Xóa");
         pContentLienHe = CreatePanel_LienHe();
+        pContentBot = CreatePanel_Bot();
+        
 //        Jframe
         setLayout(null);
         setBounds(50, 0, 1280, 720);
@@ -97,6 +99,31 @@ public class formNV extends JFrame{
         btnSua.setFont(Arial);
         btnXoa.setFont(Arial);
         
+        btnThem.setName("btn them");
+        btnXoa.setName("btn xoa");
+        btnSua.setName("btn sua");
+        
+        btnThem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionButtonThem();
+            }
+        });
+        
+        btnSua.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionButtonSua();
+            }
+        });
+        
+        btnXoa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                actionButtonXoa();
+            }
+        });
+        
 //        panel chung minh nhan dan
         pCMND.setBounds(660, 100, 600, 100);
         pCMND.setLayout(null);
@@ -121,6 +148,8 @@ public class formNV extends JFrame{
         cbbNoiCap.setBounds(10, 60, 100, 30);
         cbbNoiCap.setFont(Arial);
         cbbNoiCap.setBackground(Color.WHITE);
+        cbbNoiCap.setName("cbbNoiCap");
+        cbbNoiCap.addActionListener( (ActionListener) this);
         
         lblCMT.setFont(Arial);
         lblCMT.setBounds(170, 20, 100, 50);
@@ -166,14 +195,32 @@ public class formNV extends JFrame{
         pBot.setBorder(BorderFactory.createLineBorder(TieuDe));
         
         pBot.add(lblBot);
+        pBot.add(pContentBot);
         
         lblBot.setFont(Arial);
         lblBot.setBackground(TieuDe);
         lblBot.setBounds(0, 0, 1250, 20);
         lblBot.setAlignment(Label.CENTER);
+        
+        pContentBot.setBounds(10, 20, 1230, 175);
     }
     
-    public JPanel CreatePanel_NhanVien() {
+    private void actionButtonXoa() {
+//        to do code here
+        System.out.println("button xoa");
+    } 
+    
+    private void actionButtonSua() {
+//        to do code here
+        System.out.println("button sua");
+    } 
+    
+    private void actionButtonThem() {
+//        to do code here
+        System.out.println("button them");
+    } 
+    
+    private JPanel CreatePanel_NhanVien() {
         JPanel pNhanVien = new JPanel();
         list_lblInfor = new JLabel[10];
         list_tflInfor=new JTextField[10];
@@ -207,16 +254,18 @@ public class formNV extends JFrame{
         return pNhanVien; 
     }
     
-    public JPanel CreatePanel_LienHe() {
+    private JPanel CreatePanel_LienHe() {
         JPanel LienHe = new JPanel();
-        list_cbbLienHe = new JComboBox[5];
-        list_tfLienHe = new JTextField[5];
+        list_cbbLienHe = new JComboBox[10];
+        list_tfLienHe = new JTextField[10];
         list_lblLienHe = new JLabel[10];
-        int iNumbTextField = 3, iNumbComboBox = 3;
         LienHe.setLayout(null);
         
         String[] arr = {"Chỗ ở hiện tại", "Hộ Khẩu HT", "Nơi làm việc"
-                , "Thuộc tỉnhh thành", "Thuộc tỉnh thành", "Nơi sinh"};
+                , "Thuộc tỉnh thành", "Thuộc tỉnh thành", "Nơi sinh"};
+        
+        int iNumbTextField = 3, iNumbComboBox = 3;
+        
         int toadoxLabel = 0, toadoyLabel = 0;
         int toadoxFill = 130 , toadoyFill = 0;
         for (int i=0 ; i < iNumbTextField ; i++) {
@@ -239,10 +288,10 @@ public class formNV extends JFrame{
         toadoyLabel = 0;
         toadoxFill = 1000;
         toadoyFill = 0;
-        for (int i=0 ; i < iNumbComboBox ; i++) {
+        for (int i=iNumbTextField ; i < iNumbComboBox + iNumbTextField  ; i++) {
             list_lblLienHe[i] = new JLabel(arr[i]);
             list_lblLienHe[i].setFont(Arial);
-            list_lblLienHe[i].setBounds(toadoxLabel, toadoyLabel, 100, 30);
+            list_lblLienHe[i].setBounds(toadoxLabel, toadoyLabel, 150, 30);
             
             list_cbbLienHe[i] = new JComboBox<>();
             list_cbbLienHe[i].setModel(new DefaultComboBoxModel<>(new String[] 
@@ -251,14 +300,87 @@ public class formNV extends JFrame{
             list_cbbLienHe[i].setFont(Arial);
             list_cbbLienHe[i].setBounds(toadoxFill, toadoyFill, 200, 30);
             list_cbbLienHe[i].setBackground(Color.WHITE);
+            list_cbbLienHe[i].setName("cbbLienHe "+ (i - iNumbTextField));
+            list_cbbLienHe[i].addActionListener( (ActionListener) this);
             
             LienHe.add(list_lblLienHe[i]);
             LienHe.add(list_cbbLienHe[i]);
-            System.out.println(i);
+            
             toadoyLabel += 40;
             toadoyFill += 40;
         }
         return LienHe;
+    }
+    
+    private JPanel CreatePanel_Bot() {
+        JPanel Bot = new JPanel();
+        list_lblBot = new JLabel[20];
+        list_tfBot = new JTextField[20];
+        list_cbbBot = new JComboBox[20];
+        int iNumbTextField = 5, iNumberComboBox = 5, iCols = 0;
+        
+        Bot.setLayout(null);
+        
+        String[] arr = {"Sở thích", "Điểm mạnh", "Điểm yếu", "Nghề hiện tại", "Nghề trước đây"
+        , "A", "B", "C", "D", "E","F" ,"G"};
+        
+        int toadoxLabel = 0, toadoyLabel =0;
+        int toadoxFill = 0, toadoyFill = 30;
+        
+        for (int i=0 ; i < iNumbTextField ; i++) {
+            if ( iCols % 4 == 0 && iCols != 0) {
+                toadoxLabel = 0;
+                toadoxFill = 0;
+                toadoyLabel += 55;
+                toadoyFill +=  55;
+            }
+            
+            list_lblBot[i] = new JLabel(arr[i]);
+            list_lblBot[i].setFont(Arial);
+            list_lblBot[i].setBounds(toadoxLabel, toadoyLabel, 150, 30);
+            
+            list_tfBot[i] = new JTextField();
+            list_tfBot[i].setFont(Arial);
+            list_tfBot[i].setBounds(toadoxFill, toadoyFill, 200, 30);
+            
+            Bot.add(list_lblBot[i]);
+            Bot.add(list_tfBot[i]);
+            
+            toadoxLabel += 300;
+            toadoxFill  += 300;
+            iCols++;
+        }
+        
+        for (int i=iNumbTextField ; i < iNumberComboBox + iNumbTextField ; i++) {
+            if ( iCols % 4 == 0 && iCols != 0) {
+                toadoxLabel = 0;
+                toadoxFill = 0;
+                toadoyLabel += 55;
+                toadoyFill +=  55;
+            }
+            
+            list_lblBot[i] = new JLabel(arr[i]);
+            list_lblBot[i].setFont(Arial);
+            list_lblBot[i].setBounds(toadoxLabel, toadoyLabel, 150, 30);
+            
+            list_cbbBot[i] = new JComboBox<>();
+            list_cbbBot[i].setFont(Arial);
+            list_cbbBot[i].setBounds(toadoxFill, toadoyFill, 200, 30);
+            list_cbbBot[i].setBackground(Color.WHITE);
+            list_cbbBot[i].setModel(new DefaultComboBoxModel<>(new String[] 
+                {"TP.HCM", "Hà Nội", "Vũng tàu", "Nha Trang"}
+            ));
+            list_cbbBot[i].setName("cbbBot "+(i-iNumbTextField));
+            list_cbbBot[i].addActionListener( (ActionListener) this);
+            
+            Bot.add(list_lblBot[i]);
+            Bot.add(list_cbbBot[i]);
+            
+            toadoxLabel += 300;
+            toadoxFill  += 300;
+            iCols++;
+        }
+        return Bot;
     }
     
     public static void main(String[] args) {
@@ -270,15 +392,32 @@ public class formNV extends JFrame{
     private Color TieuDe;
     private JPanel pInfor, pCMND, pHoChieu, pLienHe, pBot, pImage , pChucNang, pButtonChucNang;
     private Label lblInfor, lblCMND, lblHoChieu, lblLienHe, lblBot, lblChucNang;
-    private JPanel pContentInfor,pContentLienHe;
+    private JPanel pContentInfor,pContentLienHe, pContentBot;
     private ImageIcon image;
-    private JLabel[] list_lblInfor, list_lblLienHe; 
-    private JTextField[] list_tflInfor, list_tfLienHe;
-    private JComboBox<String>[] list_cbbLienHe; 
+    private JLabel[] list_lblInfor, list_lblLienHe, list_lblBot;
+    private JTextField[] list_tflInfor, list_tfLienHe, list_tfBot;
+    private JComboBox<String>[] list_cbbLienHe, list_cbbBot; 
     private JTextField tfCMT, tfNgayCap;
     private JComboBox<String> cbbNoiCap;
     private JLabel lblNoiCap, lblCMT, lblNgayCap;
     private JButton btnThem, btnSua, btnXoa;
 //    private 
 //    End.
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        JComboBox<String> src = (JComboBox) ae.getSource();
+        
+        String str = String.valueOf( src.getSelectedItem() );
+        
+        if (src.getName().equals("cbbNoiCap")) System.out.println("cbbNoiCap "+str);
+        if (src.getName().equals("cbbLienHe 0")) System.out.println("cbbLienHe 1 "+str);
+        if (src.getName().equals("cbbLienHe 1")) System.out.println("cbbLienHe 2 "+str);
+        if (src.getName().equals("cbbLienHe 2")) System.out.println("cbbLienHe 3 "+str);
+        
+        for (int i=0 ; i < 5 ; i++) {
+            if ( src.getName().equals("cbbBot "+i))
+                System.out.println("cbbBot "+ i+ " " + str);
+        }
+    }
 }
