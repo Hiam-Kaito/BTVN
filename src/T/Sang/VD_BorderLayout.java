@@ -49,6 +49,12 @@ public class VD_BorderLayout extends JFrame{
         lbl21.setBounds(0, 20, 200, 50);
         lbl21.setFont(Arial);
         lbl21.setOpaque(true);
+        lbl21.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("clicked");
+            }
+        });
         
         lbl22.setBounds(0, 90, 200, 50);
         lbl22.setFont(Arial);
