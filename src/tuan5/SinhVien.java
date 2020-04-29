@@ -18,6 +18,14 @@ public class SinhVien {
         this.strDiaChi = strDiaChi;
     }
 
+    public void setInfor(int iMasv, String strHovaTen, int iNgaySinh,String strGioiTinh,String strDiaChi) {
+        this.iMaSv = iMasv;
+        this.strHovaTen = strHovaTen;
+        this.iNgaySinh = iNgaySinh;
+        this.strGioiTinh = strGioiTinh;
+        this.strDiaChi = strDiaChi;
+    }
+    
     public int getiMaSv() {
         return iMaSv;
     }

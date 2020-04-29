@@ -11,7 +11,7 @@ public class formNV extends JFrame implements ActionListener{
     }
     
     public void init() {
-        image = new ImageIcon("image/Stardew-Valley.jpg");
+        image = new ImageIcon("./image/Stardew-Valley.jpg");
         TieuDe = new Color(123, 234, 210);
         pImage = new JPanel();
         Arial = new Font("String", Font.BOLD, 14);

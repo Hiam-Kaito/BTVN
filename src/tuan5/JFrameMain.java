@@ -89,12 +89,11 @@ public class JFrameMain extends JFrame{
         ));
         scrollPanel.setViewportView(table);
         
-//        table.addMouseListener(new java.awt.event.MouseAdapter() {
-//            public void mouseClicked(java.awt.event.MouseEvent evt) {
-//                tblDSSVMouseClicked(evt);
-//            }
-//        });
-//        
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         
         //panel right
         pRight.setBackground(Color.RED);
@@ -158,7 +157,11 @@ public class JFrameMain extends JFrame{
         
         btnSua.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                btnSuaMouseClicked(evt);
+                try {
+                    btnSuaMouseClicked(evt);
+                } catch (Exception ex) {
+                    Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
@@ -261,7 +264,6 @@ public class JFrameMain extends JFrame{
             list_lbl[i].setFont(Arial);
             list_lbl[i].setName(arr[i]);
             list_lbl[i].setOpaque(true);
-            list_lbl[i].addMouseListener((MouseListener) this);
             
             Panel.add(list_lbl[i]);
             
@@ -271,25 +273,48 @@ public class JFrameMain extends JFrame{
         return Panel;
     }
     
-    private void tblDSSVMouseClicked(java.awt.event.MouseEvent evt) {
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {
         int  i=table.getSelectedRow();
-        //JOptionPane.showMessageDialog(null, "row:"+i);
-//        txtMaSV.setText(tblDSSV.getModel().getValueAt(i, 0).toString());
-//        txtHo.setText(tblDSSV.getModel().getValueAt(i, 1).toString());
-//        txtTen.setText(tblDSSV.getModel().getValueAt(i, 2).toString());         
-
+//        JOptionPane.showMessageDialog(null, "row:"+i);
+        tfMasv.setText(table.getModel().getValueAt(i, 0).toString());
+        tfHovaten.setText(table.getModel().getValueAt(i, 1).toString());
+        tfNgaySinh.setText(table.getModel().getValueAt(i, 2).toString());         
+        cbbGioitinh.setSelectedItem(table.getModel().getValueAt(i, 3));
+        tfDiachi.setText(table.getModel().getValueAt(i, 4).toString());
     }
      
-    private void btnSuaMouseClicked(MouseEvent evt) {
-        int  i = table.getSelectedRow();
-        if (i>=0)
+    private void btnSuaMouseClicked(MouseEvent evt) throws Exception {
+        int  iSelect = table.getSelectedRow();
+        int iMasv = (int) table.getValueAt( iSelect, 0);
+        
+        if (iSelect >= 0)
         {
-//            model.setValueAt(txtMaSV.getText(), i, 0);
-//            model.setValueAt(txtHo.getText(), i, 1);
-//            model.setValueAt(txtTen.getText(), i, 2);
+            SinhVien sv = new SinhVien();
+            
+            sv.setInfor(Integer.parseInt(tfMasv.getText()) , tfHovaten.getText(),
+                    Integer.parseInt(tfNgaySinh.getText()) , (String) cbbGioitinh.getSelectedItem(),
+                    tfDiachi.getText());
+            
+            String Query = "UPDATE sinhvien SET "+
+                    "MaSV =" + tfMasv.getText() +
+                    ", Hovaten = '" + tfHovaten.getText() +
+                    "', Ngaysinh = " + tfNgaySinh.getText() + 
+                    ", Gioitinh = '" + cbbGioitinh.getSelectedItem() +
+                    "', Diachi = '" + tfDiachi.getText() + 
+                    "' where Masv = " + iMasv;
+            
+            System.out.println(qlsv.updateSV(iMasv,sv, Query));
+            
+            model.setValueAt(tfMasv.getText(), iSelect, 0);
+            model.setValueAt(tfHovaten.getText(), iSelect, 1);
+            model.setValueAt(tfNgaySinh.getText(), iSelect, 2);
+            model.setValueAt(cbbGioitinh.getSelectedItem(), iSelect, 3);
+            model.setValueAt(tfDiachi.getText(), iSelect, 4);
             
             table.setModel(model);
         }
+        
+        actionButtondisplay();
     }
     
     private void btnXoaMouseClicked(MouseEvent evt) throws Exception {
@@ -400,4 +425,5 @@ public class JFrameMain extends JFrame{
     private JTextField tfMasv, tfHovaten, tfNgaySinh, tfDiachi;
     private JComboBox<String> cbbGioitinh;
 //    private JPanel pContent
+
 }

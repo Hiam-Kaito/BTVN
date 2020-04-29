@@ -40,7 +40,21 @@ public class QuanLySinhVien {
     public void createSV(SinhVien sv, String Query) throws Exception {
         statement.executeUpdate(Query);
         add(sv);
-//        System.out.println( connect.excuteUpdate(Query) );
+    }
+    
+    public boolean updateSV(int iMasv, SinhVien Sinhvien, String Query) throws Exception {
+        for (Iterator<SinhVien> i = list_sv.iterator() ; i.hasNext() ; ) {
+            SinhVien sv = i.next();
+            if (sv.getiMaSv() == iMasv) {
+                sv.setInfor(Sinhvien.getiMaSv(), Sinhvien.getStrHovaTen(),
+                        Sinhvien.getiNgaySinh(), Sinhvien.getStrGioiTinh(),
+                        Sinhvien.getStrDiaChi());
+                System.out.println(Query);
+                statement.executeUpdate(Query);
+                return true;
+            }
+        }
+        return false;
     }
     
     public boolean deleteSV(int iMasv, String Query) throws Exception {
